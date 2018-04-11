@@ -1,0 +1,77 @@
+ <div>
+    <fieldset>
+  <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1 class="h3 mb-3 font-weight-normal">Please Sign Up</h1>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="role" formControlName="role" value="admin">
+      <label class="form-check-label">Admin</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="role" formControlName="role" value="user">
+      <label class="form-check-label">User</label>
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control"  name="username"  formControlName="username" placeholder="Username">
+    <div *ngIf="username.errors">
+      <span *ngIf="username.errors.required && username.touched" class="help-block">Required*</span>    
+    </div>
+  </div>
+
+    <div formGroupName="password">
+    <div class="form-group">
+      <input  type="password" class="form-control" formControlName="pwd" placeholder="Password">
+      <div *ngIf="password.get('pwd').errors">
+          <span *ngIf="password.get('pwd').errors.required && password.get('pwd').touched" class="help-block">Required*</span>
+        </div>
+     </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="confirmPwd" placeholder="Confirm Password">
+    <div *ngIf="password.get('confirmPwd').errors">
+      <span *ngIf="password.get('confirmPwd').errors.required && password.get('confirmPwd').touched" class="help-block">Required*</span>      
+    </div>
+    </div>
+   
+  </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="firstname" placeholder="Firstname">
+      <span *ngIf="!firstname.valid && firstname.touched" class="help-block">Required*</span>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="lastname" placeholder="Lastname">
+      <span *ngIf="!lastname.valid && lastname.touched" class="help-block">Required*</span>
+    </div>
+
+    <div class="form-group">
+      <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Email">
+      <span *ngIf="email.invalid">
+        <span *ngIf="email.errors.required && email.touched" class="help-block">Required*</span>
+        <span *ngIf="email.errors.email && !email.errors.required && email.touched">Incorrect email</span>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" formControlName="mobile" placeholder="Mobile">
+      <span *ngIf="!mobile.valid && mobile.touched" class="help-block">Required*</span>
+    </div>
+    
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="Male">
+    <label class="form-check-label">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="Female">
+    <label class="form-check-label">Female</label>
+     </div>
+    <div class="lsbtn">
+    <button class="btn btn-lg btn-primary" [disabled] = "!registerForm.valid" type="submit">Sign Up</button>
+    <a routerLink='/login'><button class="btn btn-lg btn-primary">Login</button></a>
+  
+   </div>
+  </form>
+</fieldset>
+</div>

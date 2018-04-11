@@ -1,0 +1,24 @@
+.lsbtn{
+    margin-left: 25%;
+}
+.form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+.form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 6px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input{
+    margin-bottom: -3px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }

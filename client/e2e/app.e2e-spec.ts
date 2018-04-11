@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('task7-jwt App', () => {
+describe('client App', () => {
   let page: AppPage;
 
   beforeEach(() => {

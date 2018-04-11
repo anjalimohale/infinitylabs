@@ -1,0 +1,22 @@
+<div>
+  <fieldset>
+<form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h1 class="h3 mb-3 font-weight-normal">Please Login in</h1>
+  <div class="form-group">
+      <input type="email" class="form-control" formControlName="username"  placeholder="Username" autofocus>
+  </div>
+  <div class="form-group">
+      <input type="password" class="form-control" formControlName="password" placeholder="Password">
+    </div>
+    <label>
+   <a  routerLink='/login'>Forgot password?</a>
+    </label>
+    <p></p>
+  <div class="lsbtn">
+    <span *ngIf="!loginForm.valid"></span>
+   <button class="btn btn-lg btn-primary" type="submit">Login</button>
+  <a routerLink='/register'><button class="btn btn-lg btn-primary">Sign Up</button></a>
+ </div>
+</form>
+</fieldset>
+</div>
