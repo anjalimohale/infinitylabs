@@ -5,9 +5,11 @@ var mongoose = require('mongoose');
 var User = require('../models/users');
 
 router.get('/', function(req, res, next) {
-  User.find(function (err, Users) {
+  var log={page:'',total:'',size1:'',data:''};
+  User.find(function (err, users) {
     if (err) return next(err);
-    res.json(Users);
+    log.data=users;
+    res.json(log);
   });
 });
 

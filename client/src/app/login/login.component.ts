@@ -46,8 +46,14 @@ let form=this.loginForm.value;
     this.saveToken(this.token,decoded.payload);
     this.toastr.success(resp && resp.user ? `Welcome ${resp.user.firstname} ${resp.user.lastname}` : 'Logged in!');
     // this.router.navigateByUrl('/profile');
+    if(resp.user.role=='user'){
     this.router.navigate(['/profile'])
     this.auth.loggedUser=resp.user;
+    }
+    else{
+      this.router.navigate(['/admin-profile'])
+      this.auth.loggedUser=resp.user;
+    }
     
   }, (errorResp) => {
     this.auth.loggedIn.next(undefined);

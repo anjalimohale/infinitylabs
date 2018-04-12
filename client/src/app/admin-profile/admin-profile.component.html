@@ -1,3 +1,56 @@
-<p>
-  admin-profile works!
-</p>
+<!-- <app-login></app-login> -->
+<mat-card>
+  <div flag class=" mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" >
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let users; let i=index">{{i+1}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+        <mat-cell *matCellDef="let users; "> {{users.firstname}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastname">
+        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+        <mat-cell *matCellDef="let users; "> {{users.lastname}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+        <mat-cell *matCellDef="let users; "> {{users.username}}  </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="password">
+        <mat-header-cell *matHeaderCellDef> Password </mat-header-cell>
+        <mat-cell *matCellDef="let users; "> {{users.password}}  </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let users; "> {{users.email}}  </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="mobile">
+        <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
+        <mat-cell *matCellDef="let users; "> {{users.mobile}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+        <mat-cell *matCellDef="let users; "> {{users.gender}}  </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> <button mat-button color="accent" (click)="add()"><i class="material-icons">add</i></button> </mat-header-cell>
+        <mat-cell *matCellDef="let users; let i=index"> 
+          <button mat-icon-button color="accent" (click)="edit(users)"><i class="material-icons">edit</i></button>
+          <button mat-icon-button color="accent" (click)="delete(i,users)"><i class="material-icons">delete</i></button>
+          <button mat-icon-button color="accent" (click)="view(users)"><i class="material-icons">visibility</i></button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; let i=index columns: displayedColumns"></mat-row>
+    </mat-table>
+    
+    <mat-paginator  #paginator
+    [length]="length"
+    [pageSize]="page_size"
+    [showFirstLastButtons]="true"
+    (page)="pageEvent = $event; onPaginateChange($event)">
+  </mat-paginator>
+  </div>
+  </mat-card>

@@ -16,4 +16,8 @@ export class AuthenticationService{
     register(credentials){
      return this.http.post('http://localhost:3300/users/register',credentials);
     }
+
+    getUsers(){
+     return this.http.get('http://localhost:3300/users');
+    }
 }
