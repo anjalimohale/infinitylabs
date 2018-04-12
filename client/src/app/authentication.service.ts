@@ -5,15 +5,15 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class AuthenticationService{
     loggedIn = new BehaviorSubject<boolean>(false);
-    loggedUser:String;
+    loggedUser:any;
+    
     constructor(private http:HttpClient){}
 
     login(log){
-    return this.http.post('http://localhost:3300/users/login',log)
+     return this.http.post('http://localhost:3300/users/login',log)
     }
 
     register(credentials){
-    return this.http.post('http://localhost:3300/users/register',credentials);
-
+     return this.http.post('http://localhost:3300/users/register',credentials);
     }
 }

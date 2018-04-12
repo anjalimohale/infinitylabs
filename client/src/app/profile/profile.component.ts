@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
+  loggedUser;
+  constructor(private auth: AuthenticationService) { 
+    let payLoad = window.localStorage.getItem('log-details');
+    if(payLoad){
+    console.log(JSON.parse(payLoad));
+    }
+  }
 
   ngOnInit() {
-   var payLoad= localStorage.getItem('log-details');
-   var log= JSON.parse(log);
-   console.log(JSON.parse(log));
+   
   }
 
 }

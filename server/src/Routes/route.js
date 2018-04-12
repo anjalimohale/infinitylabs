@@ -24,7 +24,7 @@ router.post('/login', function(req, res, next) {
                     }
     const token = jwt.sign(payLoad, serverJWT_Secret); // <==== The all-important "jwt.sign" function
     res.status(200).send({
-        user: result.firstname,
+        user: payLoad,
         token: token
     });
   } 

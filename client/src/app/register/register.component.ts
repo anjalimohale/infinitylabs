@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ import { AuthenticationService } from '../authentication.service';
 export class RegisterComponent implements OnInit {
 
   constructor(private http:HttpClient, private router:Router,
-              private auth:AuthenticationService) {}
+              private auth:AuthenticationService,
+              private toastr:ToastrService) {}
 
 passwordConfirming (group: FormGroup) {
 let password = group.controls['pwd'].value;
@@ -61,6 +63,7 @@ email: form.email, mobile:form.mobile, gender: form.gender,
   this.auth.register(credentials).subscribe((res) => {
   if(res){
   console.log(res);
+  this.toastr.success('Register Successfully');
     this.router.navigateByUrl('/login');
   }
 });
