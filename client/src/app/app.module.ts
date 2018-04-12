@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 const appRoutes: Routes = ([
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const appRoutes: Routes = ([
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    AdminProfileComponent,
   ],
   imports: [
     BrowserModule,
