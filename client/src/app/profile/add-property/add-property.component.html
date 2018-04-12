@@ -1,0 +1,37 @@
+
+    <h3>Property Details</h3>        
+    <a routerLink='/details-property'>Details</a>
+
+   <form  [formGroup]="userForm" (ngSubmit)="add()">
+  <div class="form-group">
+   <input type="text" class="form-control" placeholder="*Insert image link" formControlName="image">
+         </div>
+    
+     <div class="form-group">
+        <input type="text" class="form-control" placeholder="Title" formControlName="title">
+         </div>
+     
+       <div class="form-group">
+         <input type="text" class="form-control" placeholder="Price" formControlName="price">
+          </div>
+     
+      <div class="form-group">
+         <input type="text" class="form-control" placeholder="Cityname" formControlName="cityname">
+       </div>
+     
+       <div class="form-group">
+         <input type="text" class="form-control" placeholder="Description" formControlName="description">
+       </div>
+     
+       <div class="form-group">
+         <input type="text" class="form-control" placeholder="Email" formControlName="email">
+       </div>
+     
+       <div class="form-group">
+         <input type="text" class="form-control" placeholder="Mobile" formControlName="mobile">
+       </div>
+     
+        <button type="submit" class="btn btn-primary">Add Your Property Details</button>
+      
+     </form>
+     

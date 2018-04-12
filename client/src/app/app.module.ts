@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 import {ToastrModule} from 'ngx-toastr';
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,12 +15,22 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AddPropertyComponent } from './profile/add-property/add-property.component';
+
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSortModule} from '@angular/material/sort';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+
 
 const appRoutes: Routes = ([
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]  },
+  { path: 'add-property', component: AddPropertyComponent },
 ]);
 
 @NgModule({
@@ -31,6 +40,7 @@ const appRoutes: Routes = ([
     RegisterComponent,
     ProfileComponent,
     AdminProfileComponent,
+    AddPropertyComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +49,10 @@ const appRoutes: Routes = ([
     HttpClientModule,BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,ToastrModule,
+    MatGridListModule,MatSortModule,
+    MatCardModule,MatFormFieldModule,
+    MatListModule,MatIconModule
+
   ],
   exports:[RouterModule],
   providers: [AuthenticationService,AuthGuardService],

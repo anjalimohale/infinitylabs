@@ -1,0 +1,7 @@
+.mat-card{
+    display: inline-block;
+    text-align: center;
+    max-width: calc(100% - 100px);
+    padding-right: 10px;
+    text-overflow: ellipsis;
+}

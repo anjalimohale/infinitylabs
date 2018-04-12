@@ -42,7 +42,6 @@ router.post('/login', function(req, res, next) {
 }
 });
 
-
 router.post('/register', function(req, res, next) {
   User.create(req.body, function (err, post) {
     if (err) return next(err);

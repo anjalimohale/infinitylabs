@@ -1,9 +1,12 @@
   <nav class="navbar navbar-light bg-light justify-content-between">
+   <form class="form-inline">
     <a routerLink="/"><img width="100" height="40" src="./assets/image001.png"></a> 
+    <button routerLink="/add-property" *ngIf="loggedIn" type="button" class="btn">Add Property</button>
+  </form>
     <form class="form-inline">
-    <button routerLink="/login" *ngIf="!loggedIn" type="button" class="btn"> SignIn </button>
+      <button routerLink="/login" *ngIf="!loggedIn" type="button" class="btn"> SignIn </button>
      <a routerLink="/profile"><label *ngIf="loggedIn">{{auth.loggedUser.firstname}} {{auth.loggedUser.lastname}}</label></a>
-    <button  *ngIf="loggedIn" type="button" class="btn" (click)="logout()">Logout</button>
+     <button  *ngIf="loggedIn" type="button" class="btn" (click)="logout()">Logout</button>
     </form>
   </nav>
   <router-outlet></router-outlet>
