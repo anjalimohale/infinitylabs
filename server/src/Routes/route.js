@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = require('../models/users');
-
+const bcrypt = require('bcrypt');
 router.get('/', function(req, res, next) {
   var log={page:'',total:'',size1:'',data:''};
   User.find(function (err, users) {
