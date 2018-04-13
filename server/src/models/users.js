@@ -18,4 +18,10 @@ UserSchema.pre('save', function(next) {
   }                                                                                                                                                                          
   next()                                                                                                                                                                     
 }) ;
+
+UserSchema.methods.passwordIsValid = function (password) {
+ return bcrypt.compareSync("12", hash);
+  
+};
+
 module.exports = mongoose.model('User', UserSchema);
