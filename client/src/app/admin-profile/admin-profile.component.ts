@@ -13,7 +13,7 @@ import { ViewDialogComponent } from './view-dialog/view-dialog.component';
   styleUrls: ['./admin-profile.component.css']
 })
 export class AdminProfileComponent implements OnInit {
-  displayedColumns = ['id','firstname','lastname','username','password','email','mobile','gender','actions'];
+  displayedColumns = ['id','firstname','lastname','username','email','mobile','gender','actions'];
   dataSource= new MatTableDataSource();
   currentPage:PageEvent;
   page_size;
@@ -37,8 +37,8 @@ export class AdminProfileComponent implements OnInit {
     this.auth.getUsers().subscribe((users:any) => {
       // let users=JSON.stringify(data);
         console.log(users);
-      this.page_size= 5
-      this.length=users.data.length;
+      this.page_size= users.data.length;
+      this.length=users.total;
       this.dataSource.data=users.data;
       // console.log(this.dataSource);
       });
