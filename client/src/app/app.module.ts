@@ -27,8 +27,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
-
+import { ViewDialogComponent } from './admin-profile/view-dialog/view-dialog.component';
+import { DeleteDialogComponent } from './admin-profile/delete-dialog/delete-dialog.component';
+import { EditDialogComponent } from './admin-profile/edit-dialog/edit-dialog.component';
+import { AddDialogComponent } from './admin-profile/add-dialog/add-dialog.component';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
+import {CdkTableModule} from '@angular/cdk/table';
 
 
 const appRoutes: Routes = ([
@@ -46,17 +51,26 @@ const appRoutes: Routes = ([
     RegisterComponent,
     ProfileComponent,
     AdminProfileComponent,
+    AddDialogComponent,
+    EditDialogComponent,
+    DeleteDialogComponent,
+    ViewDialogComponent,
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes),
     ToastrModule.forRoot(),ToastrModule, HttpClientModule,
-    ReactiveFormsModule, FormsModule, 
-    BrowserAnimationsModule, MatToolbarModule,
+    ReactiveFormsModule, FormsModule, MatSelectModule,
+    BrowserAnimationsModule, MatToolbarModule,MatSortModule,
     NoopAnimationsModule, MatInputModule, MatButtonModule,
     MatCardModule, MatDialogModule, MatProgressSpinnerModule,
     MatGridListModule, MatTableModule, MatPaginatorModule,
+    CdkTableModule,
   ],
   exports:[RouterModule],
+  entryComponents:[AddDialogComponent,
+    EditDialogComponent,
+    DeleteDialogComponent,
+    ViewDialogComponent,],
   providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]
 })

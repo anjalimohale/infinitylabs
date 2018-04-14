@@ -1,33 +1,42 @@
 <!-- <app-login></app-login> -->
+<form [formGroup]="select">
+    <mat-form-field class="select">
+        <mat-select formControlName="control" >
+          <mat-option (click)="selEve('admin')" value="admin">
+            Admin
+          </mat-option>
+          <mat-option (click)="selEve('user')" value="user">
+            User
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </form>
+
 <mat-card>
   <div flag class=" mat-elevation-z8">
-    <mat-table [dataSource]="dataSource" >
+    <mat-table [dataSource]="dataSource" matSort matSortActive="firstname" (matSortChange)="sortData($event)" >
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-        <mat-cell *matCellDef="let users; let i=index">{{i+1}} </mat-cell>
+        <mat-cell *matCellDef="let users; let i=index">{{srno+i+1}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="firstname">
-        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
         <mat-cell *matCellDef="let users; "> {{users.firstname}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="lastname">
-        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
         <mat-cell *matCellDef="let users; "> {{users.lastname}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="username">
-        <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
         <mat-cell *matCellDef="let users; "> {{users.username}}  </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="password">
-        <mat-header-cell *matHeaderCellDef> Password </mat-header-cell>
-        <mat-cell *matCellDef="let users; "> {{users.password}}  </mat-cell>
-      </ng-container>
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
         <mat-cell *matCellDef="let users; "> {{users.email}}  </mat-cell>
       </ng-container>
       <ng-container matColumnDef="mobile">
-        <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
         <mat-cell *matCellDef="let users; "> {{users.mobile}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="gender">
@@ -45,12 +54,12 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; let i=index columns: displayedColumns"></mat-row>
     </mat-table>
-    
+
     <mat-paginator  #paginator
-    [length]="length"
-    [pageSize]="page_size"
-    [showFirstLastButtons]="true"
+    [length]
+     [pageSize]
+     [showFirstLastButtons]="true"
     (page)="pageEvent = $event; onPaginateChange($event)">
-  </mat-paginator>
+    </mat-paginator>
   </div>
   </mat-card>

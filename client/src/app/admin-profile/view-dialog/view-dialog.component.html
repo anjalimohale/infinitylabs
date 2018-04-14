@@ -1,0 +1,19 @@
+<span style="color:purple"><h4>Name: {{data.firstname}} {{data.lastname}}</h4></span>
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+  colspan=4 rowspan=1
+  style="background-color: rgb(236, 209, 236)">
+  Email: {{data.email}}<br>
+  Mobile: {{data.mobile}}<br>
+  Gender: {{data.gender}}
+  </mat-grid-tile>
+  <mat-grid-tile
+  colspan=4 rowspan=1>
+  <table class="table">
+    <tr>
+      <th><button type="submit" mat-button (click)="onClick()" color="primary">Ok</button></th>
+      <th><button type="submit" mat-button (click)="onClickClose()" color="primary">Close</button></th>
+    </tr>
+  </table>
+</mat-grid-tile>
+</mat-grid-list>
