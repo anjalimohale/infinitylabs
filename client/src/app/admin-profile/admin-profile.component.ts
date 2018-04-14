@@ -6,6 +6,7 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { ViewDialogComponent } from './view-dialog/view-dialog.component';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-profile',
@@ -15,55 +16,66 @@ import { ViewDialogComponent } from './view-dialog/view-dialog.component';
 export class AdminProfileComponent implements OnInit {
   displayedColumns = ['id','firstname','lastname','username','email','mobile','gender','actions'];
   dataSource= new MatTableDataSource();
-  currentPage:PageEvent;
   page:any;
-  length;
   size1:any;
-
+  srno:any=0;
+  tab:any='user';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild( MatSort ) sort: MatSort;
   constructor(private auth:AuthenticationService,
-              public dialog: MatDialog) {
-   // this.sortData({active: "firstname", direction: "asc"});
-   
+              public dialog: MatDialog) {   
     let payLoad = window.localStorage.getItem('log-details');
       if(payLoad){
       console.log(JSON.parse(payLoad));
       }
   }
 
+  select=new FormGroup({
+    control: new FormControl('user'),
+  });
+
+  selEve(e:any){
+    this.page=1;
+    this.size1=3;
+    this.srno=(this.page-1)*this.size1;
+    console.log(e);
+    this.tab=e;
+    console.log(this.tab);
+    this.refresh();
+  }
+
   sortData(event) {
     console.log(event);
     this.sort=event;
-    if(this.sort.direction=="")
-    {
-      this.sort.direction="asc";
-    }
+      if(this.sort.direction=="")
+      {
+        this.sort.direction="asc";
+      }
     this.refresh();
-  }      
+  }   
+     
   onPaginateChange(event){ 
-    console.log(event);  
-    this.page=this.paginator.pageIndex;
-    this.size1=3;
+    this.page=event.pageIndex+1;
+    this.srno=(this.page-1)*this.size1;
     this.refresh();
   }
 
   ngOnInit() {
-    this.page=this.paginator.pageIndex;
+    this.page=1;
     this.size1=3;
     this.sort.active=' ';
     this.sort.direction='asc';
     this.refresh();
   }
+
   refresh(){
-    this.auth.getUsers(this.page,this.size1,this.sort.active,this.sort.direction).subscribe((users:any) => {
-      // let users=JSON.stringify(data);
+    this.auth.getUsers(this.page,this.size1,this.sort.active,this.sort.direction,this.tab)
+    .subscribe((users:any) => {
       console.log(users);
       this.paginator.length=users.total;
       this.paginator.pageSize=this.size1;
       this.dataSource.data=users.data1;
-      // console.log(this.dataSource);
-      });
+    });
   }
 
   add(){

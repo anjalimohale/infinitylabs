@@ -16,14 +16,14 @@ export class EditDialogComponent implements OnInit {
   ngOnInit() {
     console.log(this.data);
   }
-
+ 
                
 	uploadForm = new FormGroup ({
     firstname:new FormControl(this.data.firstname),
     lastname: new FormControl(this.data.lastname),
     role: new FormControl (this.data.role),
     username: new FormControl (this.data.username),
-    password: new FormControl (this.data.password),
+    password: new FormControl (),
     mobile: new FormControl (this.data.mobile),
     email: new FormControl (this.data.email,[Validators.email]),
     gender: new FormControl (this.data.gender),

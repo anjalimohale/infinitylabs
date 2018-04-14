@@ -1,10 +1,23 @@
 <!-- <app-login></app-login> -->
+<form [formGroup]="select">
+    <mat-form-field class="select">
+        <mat-select formControlName="control" >
+          <mat-option (click)="selEve('admin')" value="admin">
+            Admin
+          </mat-option>
+          <mat-option (click)="selEve('user')" value="user">
+            User
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </form>
+
 <mat-card>
   <div flag class=" mat-elevation-z8">
     <mat-table [dataSource]="dataSource" matSort matSortActive="firstname" (matSortChange)="sortData($event)" >
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-        <mat-cell *matCellDef="let users; let i=index">{{i+1}} </mat-cell>
+        <mat-cell *matCellDef="let users; let i=index">{{srno+i+1}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="firstname">
         <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
@@ -41,15 +54,12 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; let i=index columns: displayedColumns"></mat-row>
     </mat-table>
-    
-    <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
-      No results.........
-    </div>
 
     <mat-paginator  #paginator
-    [length]="length"
-    [pageSize]  [showFirstLastButtons]="true"
+    [length]
+     [pageSize]
+     [showFirstLastButtons]="true"
     (page)="pageEvent = $event; onPaginateChange($event)">
-  </mat-paginator>
+    </mat-paginator>
   </div>
   </mat-card>

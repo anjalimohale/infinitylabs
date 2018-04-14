@@ -32,7 +32,8 @@ import { DeleteDialogComponent } from './admin-profile/delete-dialog/delete-dial
 import { EditDialogComponent } from './admin-profile/edit-dialog/edit-dialog.component';
 import { AddDialogComponent } from './admin-profile/add-dialog/add-dialog.component';
 import {MatSortModule} from '@angular/material/sort';
-
+import {MatSelectModule} from '@angular/material/select';
+import {CdkTableModule} from '@angular/cdk/table';
 
 
 const appRoutes: Routes = ([
@@ -58,11 +59,12 @@ const appRoutes: Routes = ([
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes),
     ToastrModule.forRoot(),ToastrModule, HttpClientModule,
-    ReactiveFormsModule, FormsModule, 
+    ReactiveFormsModule, FormsModule, MatSelectModule,
     BrowserAnimationsModule, MatToolbarModule,MatSortModule,
     NoopAnimationsModule, MatInputModule, MatButtonModule,
     MatCardModule, MatDialogModule, MatProgressSpinnerModule,
     MatGridListModule, MatTableModule, MatPaginatorModule,
+    CdkTableModule,
   ],
   exports:[RouterModule],
   entryComponents:[AddDialogComponent,
