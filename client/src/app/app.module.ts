@@ -31,7 +31,7 @@ import { ViewDialogComponent } from './admin-profile/view-dialog/view-dialog.com
 import { DeleteDialogComponent } from './admin-profile/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './admin-profile/edit-dialog/edit-dialog.component';
 import { AddDialogComponent } from './admin-profile/add-dialog/add-dialog.component';
-
+import {MatSortModule} from '@angular/material/sort';
 
 
 
@@ -59,7 +59,7 @@ const appRoutes: Routes = ([
     BrowserModule, RouterModule.forRoot(appRoutes),
     ToastrModule.forRoot(),ToastrModule, HttpClientModule,
     ReactiveFormsModule, FormsModule, 
-    BrowserAnimationsModule, MatToolbarModule,
+    BrowserAnimationsModule, MatToolbarModule,MatSortModule,
     NoopAnimationsModule, MatInputModule, MatButtonModule,
     MatCardModule, MatDialogModule, MatProgressSpinnerModule,
     MatGridListModule, MatTableModule, MatPaginatorModule,

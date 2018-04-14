@@ -17,8 +17,8 @@ export class AuthenticationService{
         return this.http.post('http://localhost:3300/users/register',credentials);
     }
 
-    getUsers(){
-        return this.http.get('http://localhost:3300/users');
+    getUsers(page,size,sort_field,sort_dir){
+        return this.http.get('http://localhost:3300/users/'+page+'/'+size+'/'+sort_field+'/'+sort_dir);
     }
 
     addUser(data){
