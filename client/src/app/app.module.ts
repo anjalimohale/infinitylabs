@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';  
 import { FormsModule } from '@angular/forms'; 
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { RouterModule, Routes } from '@angular/router';
 import {ToastrModule} from 'ngx-toastr';
@@ -23,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 const appRoutes: Routes = ([
@@ -41,6 +43,7 @@ const appRoutes: Routes = ([
     ProfileComponent,
     AdminProfileComponent,
     AddPropertyComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +54,12 @@ const appRoutes: Routes = ([
     FormsModule,ToastrModule,
     MatGridListModule,MatSortModule,
     MatCardModule,MatFormFieldModule,
-    MatListModule,MatIconModule
+    MatListModule,MatIconModule,MatDialogModule
 
   ],
+  entryComponents:[
+    DialogComponent,
+],
   exports:[RouterModule],
   providers: [AuthenticationService,AuthGuardService],
   bootstrap: [AppComponent]

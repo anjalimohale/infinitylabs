@@ -1,0 +1,11 @@
+<thead>Please add your details</thead>
+<form  [formGroup]="userForm" (ngSubmit)="add()">
+     <div class="form-group">
+      <input type="text" class="form-control" placeholder="Name" formControlName="name">
+       </div>
+       <div class="form-group">
+        <input type="text" class="form-control" placeholder="Contact" formControlName="contact">
+         </div>
+   
+    <button class="btn btn-primary" >Add</button>  
+</form>

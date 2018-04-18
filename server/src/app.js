@@ -5,11 +5,14 @@ const bodyParser=require('body-parser');
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var User = require('./Routes/route');
-
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/users', User);
+var path = require('path');
+
+app.use("/media", express.static(__dirname + '/upload'));
+
 
 mongoose.connect('mongodb://localhost/users')
   .then(() =>  console.log('connected to users database = >'))
