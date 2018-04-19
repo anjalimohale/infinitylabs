@@ -39,36 +39,26 @@ filename:any;
     if(event.target.files && event.target.files.length > 0) {
     
       this.file = event.target.files[0];
-      console.log('event:',this.file)
+      console.log('event:',this.file.name)
       reader.readAsDataURL(this.file);
       reader.onload = () => {
       
          let avatar= {filename: this.file.name,
           filetype: this.file.type,
           value: reader.result.split(',')[1]
-          
          }
-        
          console.log('avarta:',avatar.filename);
-         this.filename=avatar.filename;
+          this.filename=avatar.filename;
       };
     }
-    
-  }
+    }
   onSubmit():void {
     var formdata:FormData=new FormData();
     console.log('form:',formdata);
     formdata.append("avatar",this.file)
     console.log('dfile:',formdata);
     let form=this.form.value;
-        // let object={
-        //   title:form.title,
-        //   price:form.price+' '+form.select,
-        //   cityname:form.cityname,
-        //  description:form.description,
-        //   email:form.email,
-        //   mobile: form.mobile
-        //  };
+        
         let title = form.title;
     formdata.append("title",form.title)
     formdata.append("price",form.price+' '+form.select)
@@ -78,10 +68,8 @@ filename:any;
     formdata.append("mobile",form.mobile)
         // console.log('d:',form);
          console.log('formdata:',formdata);
-    this.http.post("http://localhost:3300/users/property-add",formdata ).subscribe(result => {
-         console.log('Result',result);
-
-      
+    this.http.post("http://localhost:3300/users/property-add",formdata).subscribe(result => {
+         console.log('Result',result);  
   });
 //   this.http.post("http://localhost:3300/users/add1",object).subscribe(result => {
 //     console.log(result);    

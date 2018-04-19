@@ -72,7 +72,7 @@ var type = upload.single('avatar');
 router.post("/property-add", type, function (req, res) {
   console.log('server:',req.file.path)
   var property = new propertySchema({
-    url: req.file.path,
+    url: req.file.originalname,
     title: req.body.title,
     price: req.body.price,
     cityname: req.body.cityname,
@@ -83,7 +83,7 @@ router.post("/property-add", type, function (req, res) {
   
   var tmp_path = req.file.path;
   // console.log('file path',req.file.path)
-  property.save(req.file.path)
+  property.save(req.file.originalname)
   var target_path = '/home/infinity/infinitylabs/server/src/upload/' + req.file.originalname;
   var src = fs.createReadStream(tmp_path);
   var dest = fs.createWriteStream(target_path);

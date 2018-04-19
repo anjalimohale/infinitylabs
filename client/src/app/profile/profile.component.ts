@@ -25,20 +25,20 @@ export class ProfileComponent implements OnInit {
     console.log(JSON.parse(payLoad));
     }
   }
-  openDialog(post) {
-    const dialogRef = this.dialog.open(DialogComponent,{
-      height:'200px',
-      data: { name:this.name,contact:this.contact }
-    })
+  // openDialog(post) {
+  //   const dialogRef = this.dialog.open(DialogComponent,{
+  //     height:'200px',
+  //     data: { name:this.name,contact:this.contact }
+  //   })
   
-    dialogRef.afterClosed().subscribe((result)=>{
-      console.log(`dialog result : ${result}`);
-    });
-  }
+  //   dialogRef.afterClosed().subscribe((result)=>{
+  //     console.log(`dialog result : ${result}`);
+  //   });
+  // }
 
   ngOnInit() { 
     this.http.get("http://localhost:3300/users/getlist").subscribe(result => {
-      console.log(result);
+      console.log('getlist:',result);
       this.data1=result;
        });
    

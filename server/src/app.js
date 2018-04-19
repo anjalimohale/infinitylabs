@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use('/users', User);
 var path = require('path');
 
-app.use("/media", express.static(__dirname + '/upload'));
+app.use("/upload", express.static(__dirname + '/upload'));
 
 
 mongoose.connect('mongodb://localhost/users')
