@@ -5,7 +5,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog }  from '@angular/material';
-
+import {MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-profile',
@@ -36,10 +36,12 @@ export class ProfileComponent implements OnInit {
   //   });
   // }
 
-  ngOnInit() { 
+  ngOnInit() { }
+  value(){
     this.http.get("http://localhost:3300/users/getlist").subscribe(result => {
       console.log('getlist:',result);
       this.data1=result;
+ 
        });
    
       }

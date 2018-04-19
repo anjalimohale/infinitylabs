@@ -26,7 +26,6 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { DialogComponent } from './dialog/dialog.component';
 
-
 const appRoutes: Routes = ([
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },

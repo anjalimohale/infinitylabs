@@ -11,7 +11,7 @@ var multer = require('multer')
 var upload = multer({ dest: '.uploads/' })
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'upload')));
-console.log('path',path);
+// console.log('path',path);
 // var upload = __dirname + "/upload/";
 // app.use('/', express.static(upload));
 // console.log('proprt:',Property)
@@ -70,7 +70,7 @@ router.delete('/:id', function (req, res, next) {
 
 var type = upload.single('avatar');
 router.post("/property-add", type, function (req, res) {
-  console.log('server:',req.file.path)
+  // console.log('server:',req.file.path)
   var property = new propertySchema({
     url: req.file.originalname,
     title: req.body.title,
@@ -98,12 +98,24 @@ router.post("/property-add", type, function (req, res) {
 
 })
 });
-router.get('/getlist', function (req, res ,next) {
-  console.log("getlist ",req.body);
-  propertySchema.find({ }, function (err, docs, next) {
-    if (err) return next(err);
-    res.json(docs);
-  });
+// router.get('/getlist', function (req, res ,next) {
+//   // console.log("getlist ",req.body);
+//   propertySchema.find({ })
+//   .sort({ "price": 1 })
+//   ,function(err, docs, next) {
+//     if (err) return next(err);
+//     res.json(docs);  
+//   }
+// })
+
+router.get('/getlist', function (req, res) {
+  propertySchema.find({}).sort({ "price": 1 }).exec(function (err, listings) {
+      if (err) {
+          console.log(err);
+      } else {
+          res.render('price', { listings: listings });
+      }
+  })
 });
 
 router.delete('/:id', function (req, res, next) {
