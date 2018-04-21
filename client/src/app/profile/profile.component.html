@@ -1,6 +1,11 @@
-
-
-<mat-card class="example-card" *ngFor="let d of data1">  {{d.title}}<br>
+<button type="button" class="btn btn-default btn-sm" (click)="value()">
+    <span class="glyphicon glyphicon-sort-by-attributes"></span> Sort by Date
+  </button>
+  <button type="button" class="btn btn-default btn-sm" (click)="value()">
+    <span class="glyphicon glyphicon-sort-by-attributes"></span> Sort by Price
+  </button>
+<mat-card class="example-card" *ngFor="let d of data1">
+      {{d.title}}<br>
     Price: {{d.price}}<br>
   <img width=200 height=100 src="http://localhost:3300/upload/{{d.url}}"> <br><br>
    City:  {{d.cityname}}
@@ -8,11 +13,10 @@
         Description:{{d.description}}<br>  
         Email: {{d.email}}<br>
         Mobile: {{d.mobile}}<br>
+        {{ d.updated_at | date:'d/M/yy hh:mm:ss' }}
     </p>
  
-    <button (click)="openDialog(post)">Add</button> 
+    <!-- <button (click)="openDialog(post)">Add</button>  -->
  
 </mat-card>
-<button type="button" class="btn btn-default btn-sm" (click)="value()">
-    <span class="glyphicon glyphicon-sort-by-attributes"></span> Sort by Price
-  </button>
+ 

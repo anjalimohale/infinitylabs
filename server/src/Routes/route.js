@@ -80,7 +80,6 @@ router.post("/property-add", type, function (req, res) {
     email: req.body.email,
     mobile: req.body.mobile
   });
-  
   var tmp_path = req.file.path;
   // console.log('file path',req.file.path)
   property.save(req.file.originalname)
@@ -98,22 +97,17 @@ router.post("/property-add", type, function (req, res) {
 
 })
 });
-// router.get('/getlist', function (req, res ,next) {
-//   // console.log("getlist ",req.body);
-//   propertySchema.find({ })
-//   .sort({ "price": 1 })
-//   ,function(err, docs, next) {
-//     if (err) return next(err);
-//     res.json(docs);  
-//   }
-// })
+
 
 router.get('/getlist', function (req, res) {
-  propertySchema.find({}).sort({ "price": 1 }).exec(function (err, listings) {
+  propertySchema.find({ })
+  .sort({price: 1,Date:-1})
+  .limit(perPage)
+  .exec(function (err, listings) {
       if (err) {
           console.log(err);
       } else {
-          res.render('price', { listings: listings });
+          return res.send(listings);
       }
   })
 });

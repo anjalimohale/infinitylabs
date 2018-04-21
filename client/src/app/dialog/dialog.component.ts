@@ -6,26 +6,26 @@ import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css']
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent  {}
   
-  userForm = new FormGroup({
-    name: new FormControl(),
-    contact:new FormControl()
- });
+//   userForm = new FormGroup({
+//     name: new FormControl(),
+//     contact:new FormControl()
+//  });
 
-  ngOnInit() { }
+//   ngOnInit() { }
  
-  add(){
-    let form=this.userForm.value
-    console.log(form);
+//   add(){
+//     let form=this.userForm.value
+//     console.log(form);
   
-  }
-  constructor(
-    public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { } 
+//   }
+//   constructor(
+//     public dialogRef: MatDialogRef<DialogComponent>,
+//     @Inject(MAT_DIALOG_DATA) public data: any) { } 
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
 
-}
+// }

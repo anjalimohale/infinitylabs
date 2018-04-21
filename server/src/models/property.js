@@ -4,11 +4,11 @@ var Schema = mongoose.Schema;
 var PropertySchema = new Schema({
   url: String,
    title:String,
-   price:Number,
+   price:String,
    cityname:String,
    description:String,
    email: String,
-   mobile: Number,
+   mobile: String,
   updated_at: { type: Date, default: Date.now },
 });
 

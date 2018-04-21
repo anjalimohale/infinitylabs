@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
     this.http.get("http://localhost:3300/users/getlist").subscribe(result => {
       console.log('getlist:',result);
       this.data1=result;
- 
+      console.log(result);
        });
    
       }
